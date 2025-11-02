@@ -28,8 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
 
+#Стандартные приложения джанго
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,8 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+]
     
+# Дополнительные приложения библиотек для джанго
+INSTALLED_APPS += [
     'phonenumber_field',
+    'rest_framework',
+]
+
+#приложения проекта
+INSTALLED_APPS += [
     'api',
 ]
 
@@ -125,4 +133,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+#Импорт аутентификации кастомной модели пользователя 
 AUTH_USER_MODEL = 'api.User' 
+
+#Импорт бэкенда аутентификации
+AUTHENTICATION_BACKENDS = ('api.backends.AuthBackend',)
